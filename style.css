@@ -57,34 +57,32 @@ body {
   display: flex;
   flex-direction: column;
   gap: 7px;
-}
-
-.input__group label {
   color: white;
-  font-weight: lighter;
 }
 
 .input__group input {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   padding: 0.5em;
-  background-color: hsl(var(--primary-light-hsl), 0.3);
+  background-color: hsl(var(--primary-light-hsl), 0.1);
   border: none;
-  outline: none;
   border-radius: 0.25em;
   color: white;
-  font-weight: lighter;
 }
 
-.input__group.success input {
-  box-shadow: 0 0 0 1px hsl(var(--success-hsl));
+.input__group input::placeholder {
+  color: hsl(0, 0%, 50%);
 }
 
-.input__group.error input {
-  box-shadow: 0 0 0 1px hsl(var(--error-hsl));
+.input__group input:not(:placeholder-shown):valid {
+  outline: 1px solid hsl(var(--success-hsl));
+}
+
+.input__group input:not(:placeholder-shown):invalid {
+  outline: 1px solid hsl(var(--error-hsl));
 }
 
 .input__group input:focus {
-  box-shadow: 0 0 0 1px hsl(var(--primary-hsl));
+  outline: 1px solid hsl(var(--primary-hsl));
 }
 
 .input__group .msg {
@@ -92,16 +90,13 @@ body {
   font-size: 0.75rem;
 }
 
-.input__group.success .msg,
 .input__group.error .msg {
   display: block;
-}
-
-.input__group.error .msg {
   color: hsl(var(--error-hsl));
 }
 
 .input__group.success .msg {
+  display: block;
   color: hsl(var(--success-hsl));
 }
 
@@ -109,7 +104,6 @@ body {
   margin-top: 15px;
   padding: 0.5em 1em;
   font-size: 1.5rem;
-  font-weight: lighter;
   color: white;
   background-color: hsl(var(--primary-hsl), 0.25);
   border: 1px solid hsl(var(--primary-hsl));

@@ -1,41 +1,27 @@
-const email = document.getElementById("email");
-const emailMsg = document.querySelector(".email__msg");
+const nameContainer = document.querySelector(".input__name");
+const nameMsg = document.querySelector(".name__msg");
 const emailContainer = document.querySelector(".input__email");
-const password = document.getElementById("password");
-const passwordMsg = document.querySelector(".password__msg");
+const emailMsg = document.querySelector(".email__msg");
 const passwordContainer = document.querySelector(".input__password");
+const passwordMsg = document.querySelector(".password__msg");
 const form = document.querySelector(".form");
 const loginTitle = document.querySelector(".login__title");
+const loginButton = document.querySelector(".login__button");
 
 form.addEventListener("submit", (e) => {
-  const lowerCaseLetters = /[a-z]/g;
-  const upperCaseLetters = /[A-Z]/g;
-  const numbers = /[0-9]/g;
+  e.preventDefault();
 
-  if (
-    password.value.length < 8 ||
-    password.value.length > 30 ||
-    !password.value.match(lowerCaseLetters) ||
-    !password.value.match(upperCaseLetters) ||
-    !password.value.match(numbers)
-  ) {
-    e.preventDefault();
+  nameContainer.classList.add("success");
+  nameMsg.textContent = "Valid Name";
+  emailContainer.classList.add("success");
+  emailMsg.textContent = "Valid Email";
+  passwordContainer.classList.add("success");
+  passwordMsg.textContent = "Valid Password";
 
-    passwordContainer.classList.add("error");
-    passwordMsg.textContent =
-      "Password must be between 8 and 30 characters long and contain one uppercase letter, one symbol, and a number.";
-  } else {
-    e.preventDefault();
+  loginTitle.textContent = "Login Successful";
+  loginButton.textContent = "Logging in...";
 
-    emailContainer.classList.add("success");
-    emailMsg.textContent = "Valid Email";
-    passwordContainer.classList.add("success");
-    passwordMsg.textContent = "Valid Password";
-
-    loginTitle.textContent = "Login Successful";
-
-    setTimeout(() => {
-      e.target.submit();
-    }, 3000);
-  }
+  setTimeout(() => {
+    e.target.submit();
+  }, 3000);
 });
